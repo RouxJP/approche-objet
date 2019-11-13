@@ -7,5 +7,16 @@ public class AdressePostale {
 	public 	int		codePostal;
 	public 	String	libVille;
 
+	public AdressePostale( 	 	int		numRue, 	 	
+								String	libRue, 
+								int		codePostal,
+	 							String	libVille) {
+		
+		this.numRue 		= numRue ;
+		this.libRue 		= libRue ;
+		this.codePostal		= codePostal ;
+		this.libVille		= libVille;
+		
+	}
 
 }

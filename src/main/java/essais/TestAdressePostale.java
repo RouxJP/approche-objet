@@ -5,6 +5,7 @@ import entites.AdressePostale;
 public class TestAdressePostale {
 
 	public static void main(String[] args) {
+		/** Avant 
 		AdressePostale adP1 = new AdressePostale() ;
 		adP1.numRue 		= 12 ;
 		adP1.libRue 		= "rue Lilas";
@@ -16,6 +17,11 @@ public class TestAdressePostale {
 		adP2.libRue 		= "rue Paquerettes";
 		adP2.codePostal  	= 34100;
 		adP2.libVille		= "Montpellier";
+		**/
+		AdressePostale adP1 = new AdressePostale( 	12, "rue Lilas", 34070, "Montpellier") ;
+		AdressePostale adP2 = new AdressePostale( 	24, "rue Paquerettes", 34100, "Montpellier") ;
+
+
 
 	}
 
