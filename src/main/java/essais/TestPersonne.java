@@ -26,7 +26,8 @@ public class TestPersonne {
 		**/
 		Personne per1 = new Personne( "Martin", "Paul", new AdressePostale(12, "rue Lilas", 34070, "Montpellier"));
 		Personne per2 = new Personne( "Martin", "Eliane", new AdressePostale(24, "rue Lilas", 34100, "Montpellier"));
-		
+		System.out.println( "per1.nom prenom : " + per1.nom + " " + per1.prenom + " Ville : " + per1.adressePost.libVille);
+		System.out.println( "per1.nom prenom : " + per2.nom + " " + per2.prenom + " Ville : " + per2.adressePost.libVille);
 
 
 	}
