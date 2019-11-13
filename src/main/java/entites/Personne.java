@@ -10,7 +10,7 @@ public class Personne {
 						AdressePostale 	adressePost) {
 		this.nom = nom ;
 		this.prenom = prenom ;
-		this.adressePost = new AdressePostale(0, null, 0, null);
+		this.adressePost = adressePost;
 	}
 
 }
