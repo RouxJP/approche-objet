@@ -21,7 +21,9 @@ public class TestAdressePostale {
 		AdressePostale adP1 = new AdressePostale( 	12, "rue Lilas", 34070, "Montpellier") ;
 		AdressePostale adP2 = new AdressePostale( 	24, "rue Paquerettes", 34100, "Montpellier") ;
 
-
+		System.out.println(adP1.NB_DEPT);
+		System.out.println(adP2.NB_DEPT);
+		System.out.println(AdressePostale.NB_DEPT);
 
 	}
 

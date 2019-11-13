@@ -6,6 +6,8 @@ public class AdressePostale {
 	public 	String	libRue ;
 	public 	int		codePostal;
 	public 	String	libVille;
+	
+	public static	int		NB_DEPT		= 100;
 
 	public AdressePostale( 	 	int		numRue, 	 	
 								String	libRue, 
