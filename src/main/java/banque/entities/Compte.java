@@ -22,7 +22,7 @@ public class Compte {
 	}
 	
 	public String toString() {
-		return numCompte + " solde : " + soldeCompte ;
+		return "Compte " + numCompte + " solde : " + soldeCompte ;
 	}
 	
 }
