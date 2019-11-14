@@ -9,5 +9,10 @@ public class Debit extends Operation {
 		return "Débit : " + getDateOperation() + " " + getMntOperation();
 		
 	}
+	@Override
+	public String getType() {
+		return( "DEDIT");
+		
+	}
 
 }

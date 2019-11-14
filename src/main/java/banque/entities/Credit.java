@@ -11,4 +11,11 @@ public class Credit extends Operation {
 		
 	}
 
+	@Override
+	public String getType() {
+		return( "CREDIT");
+		
+	}
+	
+
 }
