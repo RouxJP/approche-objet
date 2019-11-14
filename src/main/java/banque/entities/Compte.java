@@ -1,8 +1,9 @@
 package banque.entities;
 
 public class Compte {
-	String	numCompte ;
-	double	soldeCompte ;
+	private	String	numCompte ;
+	private	double	soldeCompte ;
+	
 	public Compte( String numCompte, double soldeCompte) {
 		this.numCompte 		= numCompte ;
 		this.soldeCompte 	= soldeCompte ;
