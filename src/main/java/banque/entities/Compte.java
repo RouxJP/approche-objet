@@ -20,7 +20,7 @@ public class Compte {
 	}
 	public double getSolde() {
 
-		return getSoldeInitial()+ getSolde( "CREDIT") + getSolde("DEBIT") ;
+		return getSoldeInitial()+ getSolde( "CREDIT") - getSolde("DEBIT") ;
 	}
 	
 	public double getSolde( String type) {
@@ -35,7 +35,9 @@ public class Compte {
 	}
 	
 	public String toString() {
-		return "Compte " + numCompte + " solde initial : " + soldeInitial  + " Nombre d'opérations : " + getNbTotOp() + " Solde : " + getSolde() ;
+		return  "Numéro " + numCompte 
+				+ " – Nombre d’opérations " + getNbTotOp() 
+				+ " Solde : " +  getSolde() + " € ";
 	}	
 
 	

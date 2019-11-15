@@ -11,7 +11,7 @@ public class Debit extends Operation {
 	}
 	@Override
 	public String getType() {
-		return( "DEDIT");
+		return( "DEBIT");
 		
 	}
 
