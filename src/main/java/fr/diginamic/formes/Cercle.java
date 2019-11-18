@@ -1,8 +1,8 @@
-package geometrie;
+package fr.diginamic.formes;
 
-import geometrie.ObjetGeometrique;
 
-public class Cercle implements ObjetGeometrique{
+
+public class Cercle extends Forme{
 	private 	double	rayon ;
 	
 	public Cercle(  double rayon) {

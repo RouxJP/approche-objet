@@ -1,4 +1,4 @@
-package geometrie;
+package fr.diginamic.entities;
 
 import geometrie.ObjetGeometrique;
 

@@ -1,6 +1,6 @@
 package essais;
 
-import geometrie.Cercle;
+import fr.diginamic.entities.Cercle;
 import geometrie.ObjetGeometrique;
 import geometrie.Rectangle;
 
