@@ -45,8 +45,8 @@ public class CompteDaoMem implements CompteDAO {
 		detruit = false;
 		if( lstComptes.size() != 0) {
 			Iterator<Compte> it = lstComptes.iterator();
-			cpt = it.next();
 			do {
+				cpt = it.next();
 				if( cpt.getNumCompte().contentEquals( numero)) {
 					it.remove();
 					detruit = true;
