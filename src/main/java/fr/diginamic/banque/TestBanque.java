@@ -1,4 +1,4 @@
-package banque;
+package fr.diginamic.banque;
 import banque.entities.*;
 
 public class TestBanque {

@@ -3,9 +3,10 @@ package fr.diginamic.maps;
 import java.util.HashMap;
 import java.util.Set;
 
-import fr.diginamic.sets.Pays;
+
 
 public class MapPays {
+
 
 	public static void main(String[] args) {
 		Integer nbrHab, nbrHabMin;
@@ -40,5 +41,7 @@ public class MapPays {
 
 
 	}
+
+
 
 }
