@@ -1,10 +1,13 @@
 package banque.entities;
 
+import java.util.ArrayList;
+
 public interface CompteDAO {
 	/** Retourne la liste de tous les comptes
 	* @return
 	*/
-	Compte[] lister();
+	// Avant Compte[] lister();
+	ArrayList<Compte> lister();
 	
 	
 	/** Permet de sauvegarder un nouveau compte
