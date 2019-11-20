@@ -1,6 +1,6 @@
 package fr.diginamic.chaines;
 
-import banque.entities.Compte;
+import fr.banque.entities.Compte;
 
 public class Client {
 	private String	nom;

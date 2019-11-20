@@ -29,7 +29,7 @@ public class RescencementSimple {
 			
 			for( String cLigne : lignes) {
 				if( numLigne > 0){
-					// On a sauté l'entete
+					// On a sautï¿½ l'entete
 					
 					tabString = cLigne.split( ";");
 					population = 0l;
@@ -54,7 +54,7 @@ public class RescencementSimple {
 				popHerault = popHerault +  cVille.getPopulationTot();
 			}
 		}
-		System.out.println("La population de l'hérault est : " + popHerault);
+		System.out.println("La population de l'hï¿½rault est : " + popHerault);
 		
 		
 		long	popMin = -1L;
@@ -67,10 +67,10 @@ public class RescencementSimple {
 				}
 			}
 		}
-		System.out.println("La ville la moins peuplée de l'hérault est   : " + villeMoinsPeuplee + "( " + popMin + " )");
+		System.out.println("La ville la moins peuplï¿½e de l'hï¿½rault est   : " + villeMoinsPeuplee + "( " + popMin + " )");
 
 		
-		System.out.println("Les 10 villes les moins peuplées de l'Hérault");
+		System.out.println("Les 10 villes les moins peuplï¿½es de l'Hï¿½rault");
 		lstVilleFiltree = Ville.filterVilleDept( lstCommune, "34") ;
 		Collections.sort( lstVilleFiltree , new VilleCompAsc());
 		for( int i = 0 ; i < 10; i++) {
@@ -78,7 +78,7 @@ public class RescencementSimple {
 		}
 
 		
-		System.out.println("Les 10 villes les plus peuplées de l'Hérault");
+		System.out.println("Les 10 villes les plus peuplï¿½es de l'Hï¿½rault");
 		Collections.sort( lstVilleFiltree , new VilleCompDesc());
 		for( int i = 0 ; i < 10; i++) {
 			System.out.println( i+1 + " : " + lstVilleFiltree.get(i));
@@ -88,14 +88,14 @@ public class RescencementSimple {
 		// Afficher info sur population Occitanie
 		long	popOccitanie = 0L;
 		for( Ville cVille : lstCommune) {
-			if( cVille.getNomRégion().equals( "Occitanie")) {
+			if( cVille.getNomRegion().equals( "Occitanie")) {
 				popOccitanie = popOccitanie +  cVille.getPopulationTot();
 			}
 		}
 		System.out.println("La population de l'Occitanie est : " + popOccitanie);
 
 		
-		System.out.println("Les 10 villes les plus peuplées de l'Occitanie");
+		System.out.println("Les 10 villes les plus peuplï¿½es de l'Occitanie");
 		lstVilleFiltree = Ville.filterVilleRegion( lstCommune, "Occitanie") ;
 		Collections.sort( lstVilleFiltree , new VilleCompDesc());
 		for( int i = 0 ; i < 10; i++) {
@@ -103,11 +103,11 @@ public class RescencementSimple {
 		}
 		
 		
-		System.out.println("Le departement le plus peuplé d'Occitanie");
+		System.out.println("Le departement le plus peuplï¿½ d'Occitanie");
 		ArrayList<Ville> 	lstVillesRegion = Ville.filterVilleRegion( lstCommune, "Occitanie") ;
 		Set<Departement>	lstDept			= new TreeSet< Departement>();
 		for( Ville cVille : lstVillesRegion) {
-			// Creation de la liste de départements de la Région sans doublons
+			// Creation de la liste de dï¿½partements de la Rï¿½gion sans doublons
 			lstDept.add( new Departement( cVille.getCodeDepartement(), 0l));
 		}
 		//System.out.println(lstDept.size());
@@ -131,17 +131,17 @@ public class RescencementSimple {
 		}
 		
 		
-		System.out.println( "Affichez les 10 régions les plus peuplées de France");
+		System.out.println( "Affichez les 10 rï¿½gions les plus peuplï¿½es de France");
 		Set<Region>		lstRegion			= new TreeSet< Region>();
 		for( Ville cVille : lstCommune) {
 			// Creation de la liste de region sans doublons
-			lstRegion.add( new Region( cVille.getNomRégion(), 0l));
+			lstRegion.add( new Region( cVille.getNomRegion(), 0l));
 		}
 		long		popRegion;
 		for( Ville cVille : lstCommune) {
 			// Cumuler la population par region
 			for( Region cRegion : lstRegion) {
-				if( cRegion.getNomRegion().equals( cVille.getNomRégion())) {
+				if( cRegion.getNomRegion().equals( cVille.getNomRegion())) {
 					popRegion = cRegion.getPopRegion();
 					cRegion.setPopRegion( popRegion + cVille.getPopulationTot());
 				}
@@ -157,10 +157,10 @@ public class RescencementSimple {
 		}
 	
 		
-		System.out.println( " Affichez les 10 département les plus peuplés de France");
+		System.out.println( " Affichez les 10 dï¿½partement les plus peuplï¿½s de France");
 		Set<Departement>	lstDeptPlusPeuple	= new TreeSet< Departement>();
 		for( Ville cVille : lstCommune) {
-			// Creation de la liste de départements de France sans doublons
+			// Creation de la liste de dï¿½partements de France sans doublons
 			lstDeptPlusPeuple.add( new Departement( cVille.getCodeDepartement(), 0l));
 		}
 		long		populationDept;

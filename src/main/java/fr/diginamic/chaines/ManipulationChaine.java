@@ -1,21 +1,21 @@
 package fr.diginamic.chaines;
 
-import banque.entities.Compte;
+import fr.banque.entities.Compte;
 
 /**
 
-2) Utilisez la méthode length() pour afficher la taille de la chaine de caractères
-3) Utilisez la méthode indexOf(char c) pour afficher l’index du premier « ; » contenu dans la chaine de caractères.
-4) La méthode substring(int start, int end) permet d’extraire une portion de chaine de caractères comprise 
-  entre un index de début et un index de fin (exclu).
-Combinez la méthode substring et indexOf pour extraire le nom de famille de la personne.
-5) Utilisez la méthode toUpperCase() pour afficher le nom de famille en majuscules.
-6) Utilisez la méthode toLowerCase() pour afficher le nom de famille en majuscules.
-7) Utilisez la méthode split pour découper la chaine de caractères en morceaux. 
-Le séparateur est le caractère « ; ». Cette méthode retourne un tableau. Affichez le tableau ainsi obtenu.
+2) Utilisez la mï¿½thode length() pour afficher la taille de la chaine de caractï¿½res
+3) Utilisez la mï¿½thode indexOf(char c) pour afficher lï¿½index du premier ï¿½ ; ï¿½ contenu dans la chaine de caractï¿½res.
+4) La mï¿½thode substring(int start, int end) permet dï¿½extraire une portion de chaine de caractï¿½res comprise 
+  entre un index de dï¿½but et un index de fin (exclu).
+Combinez la mï¿½thode substring et indexOf pour extraire le nom de famille de la personne.
+5) Utilisez la mï¿½thode toUpperCase() pour afficher le nom de famille en majuscules.
+6) Utilisez la mï¿½thode toLowerCase() pour afficher le nom de famille en majuscules.
+7) Utilisez la mï¿½thode split pour dï¿½couper la chaine de caractï¿½res en morceaux. 
+Le sï¿½parateur est le caractï¿½re ï¿½ ; ï¿½. Cette mï¿½thode retourne un tableau. Affichez le tableau ainsi obtenu.
 8) Creez une instance et Client et de 
-Compte à partir des éléments issus du découpage de la chaine de caractères.
-a. Astuce : le nombre « 1 523.5 » contient un espace qu’il ne faut pas supprimer manuellement mais de manière informatique en utilisant la méthode replace(String, String) de la classe String
+Compte ï¿½ partir des ï¿½lï¿½ments issus du dï¿½coupage de la chaine de caractï¿½res.
+a. Astuce : le nombre ï¿½ 1 523.5 ï¿½ contient un espace quï¿½il ne faut pas supprimer manuellement mais de maniï¿½re informatique en utilisant la mï¿½thode replace(String, String) de la classe String
  * 
  * @author acer
  *
@@ -27,7 +27,7 @@ public class ManipulationChaine {
 		String[]	tabChaine	= new String[10];
 
 		char premierCaractere = chaine.charAt(0);
-		System.out.println("Premier caractère: " + premierCaractere);
+		System.out.println("Premier caractï¿½re: " + premierCaractere);
 		
 		System.out.println( "La taille de la chaine est " + chaine.length());
 		

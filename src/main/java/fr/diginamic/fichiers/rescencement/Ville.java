@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Ville {
 	
-	private String	nomRégion ;
+	private String	nomRegion ;
 	private	String	codeDepartement ;
 	// private String	codeCommune ; ??
 	private String	nomCommune ;
@@ -13,7 +13,7 @@ public class Ville {
 	
 	public Ville( 	String	nomRegion, 		String	codeDepartement, 	 String	codeCommune,
 					String	nomCommune,	 	long	populationTot ) {
-		this.nomRégion 			= nomRegion ;
+		this.nomRegion 			= nomRegion ;
 		this.codeDepartement 	= codeDepartement ; 
 		//this.codeCommune 		= codeCommune ;  ???
 		this.nomCommune 		= nomCommune ; 
@@ -47,7 +47,7 @@ public class Ville {
 	public static ArrayList<Ville> filterVilleRegion(  ArrayList<Ville> lstVilles, String nomRegion){
 		ArrayList<Ville> lstVilleFiltrees = new ArrayList<Ville>() ;
 		for( Ville cVille : lstVilles) {
-			if( cVille.getNomRégion().contentEquals( nomRegion)) {
+			if( cVille.getNomRegion().contentEquals( nomRegion)) {
 				lstVilleFiltrees.add( cVille);
 			}
 		}
@@ -55,15 +55,15 @@ public class Ville {
 	}
 
 	public String toString() {
-		return getNomRégion() 	+ " - " + getCodeDepartement()   
+		return getNomRegion() 	+ " - " + getCodeDepartement()   
 								+ " - " + getNomCommune()  + " - " + getPopulationTot() ;
 	}
 	
-	public String getNomRégion() {
-		return nomRégion;
+	public String getNomRegion(){
+		return nomRegion;
 	}
-	public void setNomRégion(String nomRégion) {
-		this.nomRégion = nomRégion;
+	public void setNomRegion(String nomRegion) {
+		this.nomRegion = nomRegion;
 	}
 	public String getCodeDepartement() {
 		return codeDepartement;

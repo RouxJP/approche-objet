@@ -1,5 +1,5 @@
 package fr.diginamic.banque;
-import banque.entities.*;
+import fr.banque.entities.*;
 
 public class TestBanque {
 

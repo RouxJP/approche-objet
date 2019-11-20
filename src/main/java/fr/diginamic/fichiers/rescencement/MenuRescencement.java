@@ -20,18 +20,18 @@ public class MenuRescencement {
 	 */
 	private static void afficherMenu() {
 		System.out.println( "Menu du rescencemnet 2016 en France :\n"
-		+ " 	- 1. Population d’une ville donnée\n"
-		+ "	- 2. Population d’un département donné\n"
-		+ "	- 3. Population d’une région donnée\n"
-		+ "	- 4. Afficher les 10 régions les plus peuplées\n"
-		+ "	- 5. Afficher les 10 départements les plus peuplés\n"
-		+ "	- 6. Afficher les 10 villes les plus peuplées d’un département\n"
-		+ "	- 7. Afficher les 10 villes les plus peuplées d’une région\n"
-		+ "	- 8. Afficher les 10 villes les plus peuplées de France\n"
+		+ " 	- 1. Population dï¿½une ville donnï¿½e\n"
+		+ "	- 2. Population dï¿½un dï¿½partement donnï¿½\n"
+		+ "	- 3. Population dï¿½une rï¿½gion donnï¿½e\n"
+		+ "	- 4. Afficher les 10 rï¿½gions les plus peuplï¿½es\n"
+		+ "	- 5. Afficher les 10 dï¿½partements les plus peuplï¿½s\n"
+		+ "	- 6. Afficher les 10 villes les plus peuplï¿½es dï¿½un dï¿½partement\n"
+		+ "	- 7. Afficher les 10 villes les plus peuplï¿½es dï¿½une rï¿½gion\n"
+		+ "	- 8. Afficher les 10 villes les plus peuplï¿½es de France\n"
 		+ "	- 9. Sortir\n");
 	}
 	/**
-	 * Affiche la population d'une villee passée en paramètre
+	 * Affiche la population d'une villee passï¿½e en paramï¿½tre
 	 * @param nomVille
 	 */
 	private static void affPopVilleDonnee( String nomVille) {
@@ -47,7 +47,7 @@ public class MenuRescencement {
 	}	
 	
 	/**
-	 * Affiche la population d'un département passé en paramètre
+	 * Affiche la population d'un dï¿½partement passï¿½ en paramï¿½tre
 	 * @param codeDept
 	 */
 	private static void affPopDeptDonnee( String codeDept) {
@@ -61,13 +61,13 @@ public class MenuRescencement {
 	}
 	
 	/**
-	 * Affiche la population d'une région passé en paramètre
+	 * Affiche la population d'une rï¿½gion passï¿½ en paramï¿½tre
 	 * @param nomRegion
 	 */
 	private static void affPopRegionDonnee( String nomRegion) {
 		long	popRegion = 0L;
 		for( Ville cVille : lstCommune) {
-			if( cVille.getNomRégion().equals(nomRegion)) {
+			if( cVille.getNomRegion().equals(nomRegion)) {
 					popRegion += cVille.getPopulationTot();
 			}
 		}
@@ -75,22 +75,22 @@ public class MenuRescencement {
 	}
 	
 	/**
-	 * Affiche les 10 régions les plus peuplées de Franc
+	 * Affiche les 10 rï¿½gions les plus peuplï¿½es de Franc
 	 * @param
 	 */
 	private static void aff10RegionPlusPeuplee() {
 
-		System.out.println( "Les 10 régions les plus peuplées de France");
+		System.out.println( "Les 10 rï¿½gions les plus peuplï¿½es de France");
 		Set<Region>		lstRegion			= new TreeSet< Region>();
 		for( Ville cVille : lstCommune) {
 			// Creation de la liste de region sans doublons
-			lstRegion.add( new Region( cVille.getNomRégion(), 0l));
+			lstRegion.add( new Region( cVille.getNomRegion(), 0l));
 		}
 		long		popRegion;
 		for( Ville cVille : lstCommune) {
 			// Cumuler la population par region
 			for( Region cRegion : lstRegion) {
-				if( cRegion.getNomRegion().equals( cVille.getNomRégion())) {
+				if( cRegion.getNomRegion().equals( cVille.getNomRegion())) {
 					popRegion = cRegion.getPopRegion();
 					cRegion.setPopRegion( popRegion + cVille.getPopulationTot());
 				}
@@ -108,15 +108,15 @@ public class MenuRescencement {
 	}
 	
 	/**
-	 * Affiche les 10 départements les plus peuplées de France
+	 * Affiche les 10 dï¿½partements les plus peuplï¿½es de France
 	 * @param
 	 */
 	private static void aff10DepartementPlusPeuplee() {
 
-		System.out.println( " Les 10 département les plus peuplés de France");
+		System.out.println( " Les 10 dï¿½partement les plus peuplï¿½s de France");
 		Set<Departement>	lstDeptPlusPeuple	= new TreeSet< Departement>();
 		for( Ville cVille : lstCommune) {
-			// Creation de la liste de départements de France sans doublons
+			// Creation de la liste de dï¿½partements de France sans doublons
 			lstDeptPlusPeuple.add( new Departement( cVille.getCodeDepartement(), 0l));
 		}
 		long		populationDept;
@@ -140,11 +140,11 @@ public class MenuRescencement {
 	
 	}
 	/**
-	 * Affiche les 10 villes les plus peuplées d'un département
+	 * Affiche les 10 villes les plus peuplï¿½es d'un dï¿½partement
 	 * @param codeDept
 	 */
 	private static void aff10VillePlusPeupleeDepartement( String codeDept) {
-		System.out.println("Les 10 villes les plus peuplées du département :  " + codeDept + " sont : ");
+		System.out.println("Les 10 villes les plus peuplï¿½es du dï¿½partement :  " + codeDept + " sont : ");
 		lstVilleFiltree = Ville.filterVilleDept( lstCommune, codeDept) ;
 		Collections.sort( lstVilleFiltree , new VilleCompDesc());
 		for( int i = 0 ; i < 10; i++) {
@@ -154,11 +154,11 @@ public class MenuRescencement {
 
 	
 	/**
-	 * Affiche les 10 villes les plus peuplées d'une région
+	 * Affiche les 10 villes les plus peuplï¿½es d'une rï¿½gion
 	 * @param nomRegion
 	 */
 	private static void aff10VillePlusPeupleeRegion( String nomRegion) {
-		System.out.println("Les 10 villes les plus peuplées de " + nomRegion + " sont : ");
+		System.out.println("Les 10 villes les plus peuplï¿½es de " + nomRegion + " sont : ");
 		lstVilleFiltree = Ville.filterVilleRegion( lstCommune, nomRegion) ;
 		Collections.sort( lstVilleFiltree , new VilleCompDesc());
 		for( int i = 0 ; i < 10; i++) {
@@ -167,11 +167,11 @@ public class MenuRescencement {
 	}
 
 	/**
-	 * Affiche les 10 villes les plus peuplées de France
+	 * Affiche les 10 villes les plus peuplï¿½es de France
 	 * @param
 	 */
 	private static void aff10VillePlusPeupleeFrance( ) {
-		System.out.println("Les 10 villes les plus peuplées de France sont : ");
+		System.out.println("Les 10 villes les plus peuplï¿½es de France sont : ");
 		Collections.sort( lstCommune , new VilleCompDesc());
 		for( int i = 0 ; i < 10; i++) {
 			System.out.println( i+1 + " : " + lstCommune.get(i));
@@ -214,7 +214,7 @@ public class MenuRescencement {
 	}
 
 	/**
-	 * Test de l'existence de la région de france
+	 * Test de l'existence de la rï¿½gion de france
 	 * @param nomRegion
 	 * @return
 	 */
@@ -222,7 +222,7 @@ public class MenuRescencement {
 		boolean regionExiste = false;
 		
 		for( Ville cVille : lstCommune) {
-			if( cVille.getNomRégion().equals( nomRegion)){
+			if( cVille.getNomRegion().equals( nomRegion)){
 				regionExiste = true;
 				break;
 			}
@@ -244,7 +244,7 @@ public class MenuRescencement {
 			
 			for( String cLigne : lignes) {
 				if( numLigne > 0){
-					// On a sauté l'entete
+					// On a sautï¿½ l'entete
 					
 					tabString = cLigne.split( ";");
 					population = 0l;
@@ -266,7 +266,7 @@ public class MenuRescencement {
 			menu = sc.nextInt();
 			
 			switch( menu) {
-				case 1 : // Population d’une ville donnée
+				case 1 : // Population dï¿½une ville donnï¿½e
 					do {
 						System.out.println("Saisir une ville de France");
 						nomVille = sc.next();
@@ -279,44 +279,44 @@ public class MenuRescencement {
 					
 				break;
 				
-				case 2 : // Population d’un département donné
+				case 2 : // Population dï¿½un dï¿½partement donnï¿½
 					do {
-						System.out.println("Saisir un département de France");
+						System.out.println("Saisir un dï¿½partement de France");
 						codeDpt = sc.next();
 						if( !existeDept( codeDpt)){
-							System.out.println("Le code département  : " + codeDpt + " n'existe pas");
+							System.out.println("Le code dï¿½partement  : " + codeDpt + " n'existe pas");
 						}
 					}while(  !existeDept( codeDpt)) ; 
 					
 					affPopDeptDonnee( codeDpt);
 			break;
 				
-				case 3 : // Population d’une région donnée
+				case 3 : // Population dï¿½une rï¿½gion donnï¿½e
 					do {
-						System.out.println("Saisir une région de France");
+						System.out.println("Saisir une rï¿½gion de France");
 						nomRegion = sc.next();
 						if( !existeRegion( nomRegion)){
-							System.out.println("La région  : " + nomRegion + " n'existe pas");
+							System.out.println("La rï¿½gion  : " + nomRegion + " n'existe pas");
 						}
 					}while(  !existeRegion( nomRegion)) ; 
 					
 					affPopRegionDonnee( nomRegion);
 				break;
 				
-				case 4 : // Afficher les 10 régions les plus peuplées
+				case 4 : // Afficher les 10 rï¿½gions les plus peuplï¿½es
 					aff10RegionPlusPeuplee();
 				break;
 				
-				case 5 : // Afficher les 10 départements les plus peuplés
+				case 5 : // Afficher les 10 dï¿½partements les plus peuplï¿½s
 					aff10DepartementPlusPeuplee();
 				break;
 				
-				case 6 : // Afficher les 10 villes les plus peuplées d’un département
+				case 6 : // Afficher les 10 villes les plus peuplï¿½es dï¿½un dï¿½partement
 					do {
-						System.out.println("Saisir un numéro de département de France");
+						System.out.println("Saisir un numï¿½ro de dï¿½partement de France");
 						codeDpt = sc.next();
 						if( !existeDept( codeDpt)){
-							System.out.println("Le code département  : " + codeDpt + " n'existe pas");
+							System.out.println("Le code dï¿½partement  : " + codeDpt + " n'existe pas");
 						}
 					}while(  !existeDept( codeDpt)) ; 				
 				
@@ -324,12 +324,12 @@ public class MenuRescencement {
 					
 				break;
 				
-				case 7 : // Afficher les 10 villes les plus peuplées d’une région
+				case 7 : // Afficher les 10 villes les plus peuplï¿½es dï¿½une rï¿½gion
 					do {
-						System.out.println("Saisir une région de France");
+						System.out.println("Saisir une rï¿½gion de France");
 						nomRegion = sc.next();
 						if( !existeRegion( nomRegion)){
-							System.out.println("La région  : " + nomRegion + " n'existe pas");
+							System.out.println("La rï¿½gion  : " + nomRegion + " n'existe pas");
 						}
 					}while(  !existeRegion( nomRegion)) ; 
 					
@@ -337,7 +337,7 @@ public class MenuRescencement {
 					aff10VillePlusPeupleeRegion( nomRegion);
 				break;
 				
-				case 8 : // Afficher les 10 villes les plus peuplées de France
+				case 8 : // Afficher les 10 villes les plus peuplï¿½es de France
 					aff10VillePlusPeupleeFrance();
 				break;
 				
