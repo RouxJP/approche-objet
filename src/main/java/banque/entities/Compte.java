@@ -13,6 +13,20 @@ public class Compte {
 		this.operations 	= new Operation[100];
 	}
 	
+	public boolean equals( Object obj) {
+		if( ! (obj instanceof  Compte) ) { 
+			return false ;
+		}
+		Compte autre = (Compte) obj ;
+		if(( this.getNumCompte().compareTo( autre.getNumCompte())) == 0){
+			return true;
+		}else{
+			return false;
+		}
+
+	}
+
+	
 	public void ajouterOperation( Operation ope) {
 		int nbOpe = getNbTotOp() + 1;
 		setNbTotOp( nbOpe);
