@@ -1,14 +1,14 @@
-package geometrie;
+package fr.diginamic.geometrie;
 
 public interface ObjetGeometrique {
-	/** Retourne le périmètre d’une forme géométrique
+	/** Retourne le pï¿½rimï¿½tre dï¿½une forme gï¿½omï¿½trique
 	* @return double
 	*/
 	double perimetre();
 	
 	
 	/** Permet de sauvegarder un nouveau compte
-	* @param nvCompte nouveau compte à sauvegarder
+	* @param nvCompte nouveau compte ï¿½ sauvegarder
 	*/
 	double surface();
 	

@@ -1,4 +1,4 @@
-package fr.diginamic.fichiers.rescencement;
+package fr.diginamic.fichiers.rescencement_jp;
 
 public class Region implements Comparable<Region>{
 	private	String	nomRegion;

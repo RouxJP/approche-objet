@@ -1,4 +1,4 @@
-package fr.diginamic.fichiers.rescencement;
+package fr.diginamic.fichiers.rescencement_jp;
 
 import java.util.ArrayList;
 

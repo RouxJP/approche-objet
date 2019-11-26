@@ -1,6 +1,6 @@
-package geometrie;
+package fr.diginamic.geometrie;
 
-import geometrie.ObjetGeometrique;
+import fr.diginamic.geometrie.ObjetGeometrique;
 
 public class Cercle implements ObjetGeometrique{
 	private 	double	rayon ;

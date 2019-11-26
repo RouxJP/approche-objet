@@ -1,4 +1,4 @@
-package fr.diginamic.fichiers.rescencement;
+package fr.diginamic.fichiers.rescencement_jp;
 
 public class Departement implements Comparable<Departement>{
 	private	String	codeDept;

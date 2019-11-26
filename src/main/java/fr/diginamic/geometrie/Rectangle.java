@@ -1,4 +1,4 @@
-package geometrie;
+package fr.diginamic.geometrie;
 
 public class Rectangle implements ObjetGeometrique{
 	private 	double	largeur;

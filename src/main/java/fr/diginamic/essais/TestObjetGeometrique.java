@@ -1,8 +1,8 @@
 package fr.diginamic.essais;
 
 import fr.diginamic.entities.Cercle;
-import geometrie.ObjetGeometrique;
-import geometrie.Rectangle;
+import fr.diginamic.geometrie.ObjetGeometrique;
+import fr.diginamic.geometrie.Rectangle;
 
 public class TestObjetGeometrique {
 

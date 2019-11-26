@@ -13,9 +13,6 @@ public class LectureFichier {
 			File file = new File("C:/tmp/recensement population 2016.csv");
 			List<String> lignes = FileUtils.readLines(file, "UTF-8");
 			
-			for (String ligne: lignes){
-				System.out.println(ligne);
-			}
 			System.out.println("Nombre de lignes :" + lignes.size());
 			
 		}catch( IOException ie) {
