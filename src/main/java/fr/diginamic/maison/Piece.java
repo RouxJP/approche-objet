@@ -7,9 +7,9 @@ public abstract class Piece {
 	
 	public Piece( double	superficie, int		numEtage) {
 		if( numEtage < 0) {
-			System.out.println(" Impossible saisir étage négatif");
+			System.out.println(" Impossible saisir ï¿½tage nï¿½gatif");
 		}
-		this.superficie = superficie ;
+		this.superficie = Math.abs(superficie) ;
 		this.numEtage 	= numEtage;
 	}
 	

@@ -17,7 +17,7 @@ public class Maison {
 		affichage = "Superfice de \n la maison : " + superficieMaison() + "\n";
 		int i = 0;
 		while( superficieEtageMaison( i) != 0) {
-			affichage += " l'étage : " + i + " " + superficieEtageMaison( i) + "\n";
+			affichage += " l'ï¿½tage : " + i + " " + superficieEtageMaison( i) + "\n";
 			i++;
 		}
 		return( affichage);

@@ -30,6 +30,12 @@ public enum Saison {
 		}
 		return null;
 	}
+	public static Saison getSaison( int num) {
+		for( Saison saison:values()) {
+			if( saison.getNumOrdre() == num) return saison;
+		}
+		return null;
+	}
 
 	public String getLibelle() {
 		return libelle;
