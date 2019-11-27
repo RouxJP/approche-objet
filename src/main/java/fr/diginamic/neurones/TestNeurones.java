@@ -21,19 +21,24 @@ public class TestNeurones {
 		dataSet.addRow(rThree);
 		dataSet.addRow(rFour);
 		
-		for( double i = 1 ; i < 1111 ; i++) {
-			dataSet.addRow( new DataSetRow(new double[] {i, i}, new double[]{1d}));
+		for( int i = 1 ; i < 101 ; i++) {
+			neuralNetwork.learn(dataSet) ;
 		}
-		for( double i = 1 ; i < 1111 ; i++) {
-			dataSet.addRow( new DataSetRow(new double[] {0d, i}, new double[]{1d}));
-		}
-		for( double i = 1 ; i < 1111 ; i++) {
-			dataSet.addRow( new DataSetRow(new double[] {i, 0d}, new double[]{1d}));
-		}
-		neuralNetwork.learn(dataSet) ;
 		
-		// Test
+		// Test 1 + 0 donne 1
 		neuralNetwork.setInput( 1d, 0d);
+		neuralNetwork.calculate();
+		for (double output: neuralNetwork.getOutput()){
+			System.out.println(output);
+		}
+		// Test 0 + 1 donne 1
+		neuralNetwork.setInput( 0d, 1d);
+		neuralNetwork.calculate();
+		for (double output: neuralNetwork.getOutput()){
+			System.out.println(output);
+		}
+		// Test 0 + 0 donne 0
+		neuralNetwork.setInput( 0d, 0d);
 		neuralNetwork.calculate();
 		for (double output: neuralNetwork.getOutput()){
 			System.out.println(output);
