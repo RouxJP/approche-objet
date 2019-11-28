@@ -10,15 +10,15 @@ import org.junit.jupiter.api.Test;
 
 import fr.diginamic.maison.Piece.typePiece;
 
-class MaisonTest {
-	Maison m1;
-	Piece p1 ;
-	Piece p2 ;
-	Piece p3 ;
-	Piece p4 ;
-	Piece p5 ;
+class  MaisonTest {
+	public Maison m1;
+	public Piece p1 ;
+	public Piece p2 ;
+	public Piece p3 ;
+	public Piece p4 ;
+	public Piece p5 ;
 	
-
+	
 	@Test
 	void testSuperficieMaison() {
 		m1 = new Maison();
@@ -27,7 +27,7 @@ class MaisonTest {
 		p3 = new Cuisine( 10, 0);
 		p4 = new SaleDeBain( 10, 0);
 		p5 = new Wc( 10, 0);
-		
+
 		m1.ajouterPiece(p1);
 		m1.ajouterPiece(p2);
 		m1.ajouterPiece(p3);
@@ -43,8 +43,8 @@ class MaisonTest {
 		m1 = new Maison();
 		p1 = new Salon( -10, 0);
 		p2 = new Chambre( 10, 0);
-		p3 = new Cuisine( 10, 0);
-		p4 = new SaleDeBain( 10, 0);
+		p3 = new Cuisine( 10, 1);
+		p4 = new SaleDeBain( 10, 1);
 		p5 = new Wc( 10, 0);
 		
 		m1.ajouterPiece(p1);
@@ -73,6 +73,19 @@ class MaisonTest {
 		m1 = new Maison();
 		p1 = new Salon( 10, 0);
 		p2 = new Chambre( 10, 0);
+		m1.ajouterPiece(p1);
+		m1.ajouterPiece(p2);
+		
+		double s = m1.superficieTypePiece( typePiece.P_CHAMBRE);
+		assertEquals(10, s, 0);
+	
+	}
+
+	@Test
+	void testSuperficieTypePieceNegative() {
+		m1 = new Maison();
+		p1 = new Salon( -10, 0);
+		p2 = new Chambre( -10, 0);
 		m1.ajouterPiece(p1);
 		m1.ajouterPiece(p2);
 		
