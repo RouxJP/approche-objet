@@ -11,7 +11,7 @@ import fr.diginamic.fichiers.rescencement.jdbc.entities.Ville;
 
 
 
-public class VilleDaoJdbc extends ConnectionBaseRescencement implements VilleDao {
+public class VilleDaoJdbc  implements VilleDao {
 	static Connection 						con 		= ConnectionBaseRescencement.getConnection();
 
 	String sqlInsertVille = "INSERT INTO Ville ( CodeCommune, NomCommune, CodeRegion, NomRegion, CodeDepartement, Population)  VALUES ( ?, ?, ?, ?, ?, ?)";

@@ -25,8 +25,8 @@ public class DepartementDaoJdbc implements DepartementDao {
 			
 			PreparedStatement prep = con.prepareStatement( sqlInsertDepartement);
 
-			prep.setString( 1, departement.getCode().replace("'", "''"));
-			prep.setString( 2, departement.getNom().replace("'", "''"));
+			prep.setString( 1, departement.getCode());
+			prep.setString( 2, departement.getNom());
 			prep.setFloat(  3, departement.getPopulation()); 
 
 			prep.executeUpdate( );

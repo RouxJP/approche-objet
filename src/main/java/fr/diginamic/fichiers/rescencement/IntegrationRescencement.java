@@ -25,8 +25,8 @@ import fr.diginamic.fichiers.rescencement.utils.RecensementUtils;
  *
  */
 public class IntegrationRescencement {
-	private static final String fichierRegion 		= "C:/Tmp/Regions.csv";
-	private static final String fichierDepartement 	= "C:/Tmp/Departements.csv";
+	private static final String fichierRegion 			= "C:/Tmp/Regions.csv";
+	private static final String fichierDepartement 		= "C:/Tmp/Departements.csv";
 	private static final String fichierVille 			= "C:/Tmp/Villes.csv";
 	private static final Logger LOG = LoggerFactory.getLogger( IntegrationRescencement.class);
 	
@@ -42,7 +42,7 @@ public class IntegrationRescencement {
 		// Se connecter à la base MariaDb pour tous les accés à la base
 		tempsDeb = System.currentTimeMillis();
 	
-		LOG.info("Connection à la base de donnée !");
+		LOG.info("Début d'intégration des données");
 		ConnectionBaseRescencement conBaseRescencement = new ConnectionBaseRescencement();
 	
 		//*************
@@ -51,7 +51,7 @@ public class IntegrationRescencement {
 		List<Region> lstRegion = RecensementUtils.lireRegions( fichierRegion);
 
 		if ( lstRegion == null) {
-			LOG.info("L'application doit s'arrétée en raison d'une erreur d'exécution.");
+			LOG.error("L'application doit s'arrétée en raison d'une erreur d'exécution.");
 			System.exit(0);
 		}
 		
@@ -65,10 +65,10 @@ public class IntegrationRescencement {
 				}else {
 					countDoublons++;
 				}
-				LOG.info( "Region " +  region.getNom() +  "traitée");
+				LOG.debug( "Region " +  region.getNom() +  "traitée");
 		}
 		LOG.info(" Nombre de region insérées         : " + countInsertions);
-		LOG.info(" Nombre de régions déja existantes : " + countDoublons);
+		LOG.warn(" Nombre de régions déja existantes : " + countDoublons);
 
 		//**************
 		// Les Departements
@@ -79,7 +79,7 @@ public class IntegrationRescencement {
 		List<Departement> lstDepartement = RecensementUtils.lireDepartements( fichierDepartement);
 
 		if ( lstDepartement == null) {
-			LOG.info("L'application doit s'arrétée en raison d'une erreur d'exécution.");
+			LOG.error("L'application doit s'arrétée en raison d'une erreur d'exécution.");
 			System.exit(0);
 		}
 		
@@ -94,10 +94,10 @@ public class IntegrationRescencement {
 				}else {
 					countDoublons++;
 				}
-				LOG.info( "Département " +  departement.getNom() +  " traité");
+				LOG.debug( "Département " +  departement.getNom() +  " traité");
 		}
 		LOG.info(" Nombre d'insertions OK : " + countInsertions);
-		LOG.info(" Nombre de Département déja existantes : " + countDoublons);
+		LOG.warn(" Nombre de Département déja existantes : " + countDoublons);
 
 		
 		//*************
@@ -109,7 +109,7 @@ public class IntegrationRescencement {
 		List<Ville> lstVille = RecensementUtils.lireVilles( fichierVille);
 
 		if ( lstVille == null) {
-			LOG.info("L'application doit s'arrétée en raison d'une erreur d'exécution.");
+			LOG.error("L'application doit s'arrétée en raison d'une erreur d'exécution.");
 			System.exit(0);
 		}
 		
@@ -124,17 +124,18 @@ public class IntegrationRescencement {
 				}else {
 					countDoublons++;
 				}
-				//LOG.info( "Ville " +  ville.getNom() +  " traitée");
+				LOG.debug( "Ville " +  ville.getNom() +  " traitée");
 		}
 		
 		LOG.info(" Nombre d'insertions OK : " + countInsertions);
-		LOG.info(" Nombre de Ville déja existantes : " + countDoublons);
+		LOG.warn(" Nombre de Ville déja existantes : " + countDoublons);
 	
 		// Fermer la base de donnée
 		conBaseRescencement.closeConnection();
 		
 		tempsFin = System.currentTimeMillis();
 		LOG.info("Temps d'execution total  : " + (tempsFin - tempsDeb));
+		LOG.info("Fin d'intégration des données");
 
 	}
 

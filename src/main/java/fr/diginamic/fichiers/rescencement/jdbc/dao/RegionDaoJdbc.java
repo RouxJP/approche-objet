@@ -24,7 +24,7 @@ public class RegionDaoJdbc implements RegionDao {
 			PreparedStatement prep = con.prepareStatement( sqlInsertRegion);
 			
 			prep.setString( 1, region.getCode());
-			prep.setString( 2, region.getNom().replace("'", "''"));
+			prep.setString( 2, region.getNom());
 			prep.setFloat(  3, region.getPopulation());
 
 			prep.executeUpdate( );
