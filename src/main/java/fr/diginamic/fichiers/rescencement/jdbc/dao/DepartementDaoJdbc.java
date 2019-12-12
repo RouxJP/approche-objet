@@ -1,48 +1,46 @@
 package fr.diginamic.fichiers.rescencement.jdbc.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 
 import fr.diginamic.fichiers.rescencement.jdbc.entities.Departement;
 
 public class DepartementDaoJdbc implements DepartementDao {
-	Connection 								con 		= null;
-	Statement								stat 		= null;
-	ResultSet								rs	 		= null ;
-	ConnectionBaseRescencement				conRescencement  	= new ConnectionBaseRescencement();
+	static Connection 						con 		= ConnectionBaseRescencement.getConnection();
 
-	// Static bloc pour récupérer la 1ere fois la connection à la BD
-	{
-		 con = conRescencement.getConnection();
-	}
-	
+	String sqlInsertDepartement = "INSERT INTO Departement ( CodeDepartement, NomDepartement, Population) VALUES ( ?, ?, ?)";
 
 	@Override
-	public void insert(Departement departement) throws SQLException {
+	/** Insertion d'un département dans la table Departement de MariaDb
+	 *  @return : 1 insertion OK  
+	 *            0 insertion OK  
+	 */
+	public int  insert( Departement departement) {
 		try {
 			// Insertion d'un nouveau Article
 			
-			stat = con.createStatement();
-			stat.executeUpdate( "INSERT INTO Departement ( CodeDepartement, NomDepartement, Population) "
-					           + "VALUES ( '" 	+ departement.getCode() + "', '" 
-					        					+ departement.getNom().replace("'", "''") + "',' " 
-					           					+ departement.getPopulation() + 
-					           					" )");
+			PreparedStatement prep = con.prepareStatement( sqlInsertDepartement);
+
+			prep.setString( 1, departement.getCode().replace("'", "''"));
+			prep.setString( 2, departement.getNom().replace("'", "''"));
+			prep.setFloat(  3, departement.getPopulation()); 
+
+			prep.executeUpdate( );
 			
 			con.commit();
 		
+		} catch (SQLIntegrityConstraintViolationException e) {
+			return 0;
+			
 		} catch (SQLException e) {
-			throw e;
-		} finally {
-			// Fermetures
-			try {
-				stat.close();
-			} catch (SQLException e) {
-				System.out.println( e.getMessage());
-			}
-		}
+			throw new RuntimeException( e);
+			
+		} 
+		return 1;
 	}
 
 }

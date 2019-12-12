@@ -119,7 +119,6 @@ public class RescencementSimple {
 			// Creation de la liste de départements de la R�gion sans doublons
 			lstDept.add( new Departement( cVille.getCodeDepartement(), "", 0l));
 		}
-		//System.out.println(lstDept.size());
 		long		popDept;
 		for( Ville cVille : lstVillesRegion) {
 			// Cumuler la population par departement
@@ -134,9 +133,11 @@ public class RescencementSimple {
 		for( Departement cDept : lstDept) {
 			lstDeptTriee.add( cDept);
 		}
+		
 		Collections.sort( lstDeptTriee, new DepartCompDesc());
+
 		for( int i = 0 ; i < 1; i++) {
-			System.out.println( i+1 + " : " + lstDeptTriee.get(i));
+			System.out.println( lstDeptTriee.get(i).getCode());
 		}
 		
 		

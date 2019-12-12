@@ -1,8 +1,10 @@
 package fr.diginamic.fichiers.rescencement.jdbc.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 
 import fr.diginamic.fichiers.rescencement.jdbc.entities.Ville;
@@ -10,45 +12,40 @@ import fr.diginamic.fichiers.rescencement.jdbc.entities.Ville;
 
 
 public class VilleDaoJdbc extends ConnectionBaseRescencement implements VilleDao {
-	Connection 								con 		= null;
-	Statement								stat 		= null;
-	ResultSet								rs	 		= null ;
-	ConnectionBaseRescencement				conRescencement  	= new ConnectionBaseRescencement();
+	static Connection 						con 		= ConnectionBaseRescencement.getConnection();
 
-	// Static bloc pour récupérer la 1ere fois la connection à la BD
-	{
-		 con = conRescencement.getConnection();
-	}
+	String sqlInsertVille = "INSERT INTO Ville ( CodeCommune, NomCommune, CodeRegion, NomRegion, CodeDepartement, Population)  VALUES ( ?, ?, ?, ?, ?, ?)";
 	
 
 	@Override
-	public void insert( Ville ville) throws  SQLException{
+	/** Insertion d'une ville  dans la table Ville de MariaDb
+	 *  @return : 1 insertion OK  
+	 *            0 insertion OK  
+	 */
+	public int insert( Ville ville) {
 		
 			try {
-				// Insertion d'un nouveau Article
-				
-				stat = con.createStatement();
-				stat.executeUpdate( "INSERT INTO Ville ( CodeCommune, NomCommune, CodeRegion, NomRegion, CodeDepartement, Population) "
-						           + "VALUES ( '" 	+ ville.getCodeVille().replace("'", "''")  + "', '" 
-						           					+ ville.getNom().replace("'", "''") + "', '" 
-						           					+ ville.getCodeRegion() + "', '" 
-						        					+ ville.getNomRegion().replace("'", "''") + "',' " 
-						        					+ ville.getCodeDepartement() + "', " 
-						           					+ ville.getPopulation() + 
-						           					" )");
+				// Inserer une nouvelle ville			
+				PreparedStatement prep  = con.prepareStatement( sqlInsertVille);
+		        prep.setString( 1,  ville.getCodeVille() );
+		        prep.setString( 2,  ville.getNom() );
+		        prep.setString( 3,  ville.getCodeRegion() );
+		        prep.setString( 4,  ville.getNomRegion() );
+		        prep.setString( 5,  ville.getCodeDepartement() );
+		        prep.setFloat(  6,  ville.getPopulation() );
+
+				prep.executeUpdate( );
 				
 				con.commit();
 			
+			} catch (SQLIntegrityConstraintViolationException e) {
+				return 0;
+				
 			} catch (SQLException e) {
-				throw e;
-			} finally {
-				// Fermetures
-				try {
-					stat.close();
-				} catch (SQLException e) {
-					System.out.println( e.getMessage());
-				}
-			}
+				throw new RuntimeException( e);
+				
+			} 
+			return 1;
 		}
 
 	}

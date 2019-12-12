@@ -7,7 +7,12 @@ import java.util.List;
  * @author DIGINAMIC
  *
  */
-public class Departement {
+public class Departement implements Comparable<Departement> {
+
+	@Override
+	public int compareTo(Departement o) {
+		return this.code.compareTo( o.getCode());
+	}
 
 	/** code : String*/
 	private String code;
@@ -15,6 +20,9 @@ public class Departement {
 	private String nom;
 	/** population : int*/
 	private long population;
+	
+	
+
 	
 	/** villes : List<Ville>*/
 	private List<Ville> villes = new ArrayList<>();

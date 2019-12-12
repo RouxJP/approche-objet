@@ -2,57 +2,62 @@ package fr.diginamic.fichiers.rescencement.jdbc.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class ConnectionBaseRescencement {
-	Connection 					con 		= null;
-	Statement					stat 		= null;
-	ResultSet					rs	 		= null ;
+	static Connection 			con 		= null;
 
 	
 	// Static bloc pour récupérer la 1ere fois la connection à la BD
 	{
-		Connection();
+		connectionDataBase();
 	}
-	
-	public void Connection() {
+	/**
+	 * Charger le driver à la base MariaDb et établir une connection avec les 
+	 * paramètres dans le fichier de properties ( url/user/passwd)
+	 */
+	public void connectionDataBase() {
 		try {
-			// Connexion BD 
+			// Récupérer les paramètres de connection
 			ResourceBundle prop = ResourceBundle.getBundle("DataBaseRescLocale");
 			String url 			= prop.getString("url");
 			String user 		= prop.getString("user");
 			String passwd 		= prop.getString("passwd");
 			
+			// Charger le driver de MaraiDb
 			DriverManager.registerDriver( new org.mariadb.jdbc.Driver());
 			con =  DriverManager.getConnection( url, user, passwd);
-					
+			
+			if( con == null ) {
+				throw new RuntimeException( "Impossible d'établir une connection");
+			}
 			
 		} catch (SQLException e) {
-			System.out.println( e.getMessage());
+			throw new RuntimeException( "Impossible d'établir une connection");
 
-		} finally {
-			
 		}
 	}
-	
-	public Connection getConnection() {
+	/**
+	 * Retourne la connection fait lors de la primière utilisation de cette classe
+	 * @return Connection : con
+	 */
+	public static Connection getConnection() {
 		return con;
 	}
 	
-	public  void CloseConnection() {
+	/** 
+	 * Ferme la connection à la base de données
+	 */
+	public  void closeConnection() {
 		try {
 			con.close();
 					
 			
 		} catch (SQLException e) {
-			System.out.println( e.getMessage());
+			throw new RuntimeException( "Impossible de fermer la connection à la Base de données");
 
-		} finally {
-			
-		}
+		} 
 	}
 	
 

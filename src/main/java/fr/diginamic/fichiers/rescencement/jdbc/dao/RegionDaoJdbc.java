@@ -1,50 +1,44 @@
 package fr.diginamic.fichiers.rescencement.jdbc.dao;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 import fr.diginamic.fichiers.rescencement.jdbc.entities.Region;
 
 public class RegionDaoJdbc implements RegionDao {
-	Connection 								con 		= null;
-	Statement								stat 		= null;
-	ResultSet								rs	 		= null ;
-	ConnectionBaseRescencement				conRescencement  	= new ConnectionBaseRescencement();
+	static Connection 						con 		= ConnectionBaseRescencement.getConnection();
 
-	// Static bloc pour récupérer la 1ere fois la connection à la BD
-	{
-		 con = conRescencement.getConnection();
-	}
-	
+	String sqlInsertRegion = "INSERT INTO Region ( CodeRegion, NomRegion, Population) VALUES ( ?, ?, ?)" ;
 
 
 	@Override
-	public void insert(Region region) throws SQLException {
-		
+	/** Insertion d'une region dans la table Region de MariaDb
+	 *  @return : 1 insertion OK  
+	 *            0 insertion OK  
+	 */
+	public int insert(Region region)  {
 		try {
-			// Insertion d'un nouveau Article
+			// Insertion d'une nouvelle région
+			PreparedStatement prep = con.prepareStatement( sqlInsertRegion);
 			
-			stat = con.createStatement();
-			stat.executeUpdate( "INSERT INTO Region ( CodeRegion, NomRegion, Population) "
-					           + "VALUES ( '" 	+ region.getCode() + "', '" 
-					        					+ region.getNom().replace("'", "''") + "',' " 
-					           					+ region.getPopulation() + 
-					           					" )");
+			prep.setString( 1, region.getCode());
+			prep.setString( 2, region.getNom().replace("'", "''"));
+			prep.setFloat(  3, region.getPopulation());
+
+			prep.executeUpdate( );
 			
 			con.commit();
 		
+		} catch (SQLIntegrityConstraintViolationException e) {
+			return 0;
+			
 		} catch (SQLException e) {
-			throw e;
-		} finally {
-			// Fermetures
-			try {
-				stat.close();
-			} catch (SQLException e) {
-				System.out.println( e.getMessage());
-			}
-		}
+			throw new RuntimeException( e);
+			
+		} 
+		return 1;
 	}
 
 	
