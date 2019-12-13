@@ -11,7 +11,9 @@ import org.slf4j.LoggerFactory;
 import fr.diginamic.fichiers.rescencement.IntegrationRescencement;
 
 public class ConnectionBaseRescencement {
+	/** Connection à la base de donnée MariaDb */
 	static Connection 			con 		= null;
+	/** Log des traces */
 	private static final Logger LOG = LoggerFactory.getLogger( IntegrationRescencement.class);
 
 	
@@ -32,7 +34,7 @@ public class ConnectionBaseRescencement {
 			String passwd 		= prop.getString("passwd");
 			
 			// Charger le driver de MaraiDb
-			LOG.info("Tentative de connection à la nbase de donnée...");
+			LOG.info("Tentative de connection à la base de donnée...");
 		
 			DriverManager.registerDriver( new org.mariadb.jdbc.Driver());
 			con =  DriverManager.getConnection( url, user, passwd);

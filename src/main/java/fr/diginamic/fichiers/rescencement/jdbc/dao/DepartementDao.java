@@ -1,6 +1,7 @@
 package fr.diginamic.fichiers.rescencement.jdbc.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import fr.diginamic.fichiers.rescencement.jdbc.entities.Departement;
 
@@ -12,4 +13,12 @@ public interface DepartementDao {
 	 */
 	public int insert( Departement departement) ;
 
+	/**
+	 * Extraire de la base MariaDb les départements les plus peuplés 
+	 * triés par ordre décroissant
+	 * @return
+	 */
+	public List<Departement> extraireDepartementPlusPeuplee();
+
+	
 }

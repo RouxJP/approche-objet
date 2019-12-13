@@ -36,7 +36,7 @@ public class RescencementSimple {
 			
 			for( String cLigne : lignes) {
 				if( numLigne > 0){
-					// On a saut� l'entete
+					// On a sauté l'entete
 					
 					tabString = cLigne.split( ";");
 					population = 0l;
@@ -76,10 +76,10 @@ public class RescencementSimple {
 				}
 			}
 		}
-		System.out.println("La ville la moins peuplée de l'h�rault est   : " + villeMoinsPeuplee + "( " + popMin + " )");
+		System.out.println("La ville la moins peuplée de l'hérault est   : " + villeMoinsPeuplee + "( " + popMin + " )");
 
 		
-		System.out.println("Les 10 villes les moins peupl�es de l'Hérault");
+		System.out.println("Les 10 villes les moins peuplées de l'Hérault");
 		lstVilleFiltree =  Ville.filterVilleDept( lstCommune, "34") ;
 		Collections.sort( lstVilleFiltree , new VilleCompAsc());
 		for( int i = 0 ; i < 10; i++) {
@@ -87,7 +87,7 @@ public class RescencementSimple {
 		}
 
 		
-		System.out.println("Les 10 villes les plus peuplées de l'H�rault");
+		System.out.println("Les 10 villes les plus peuplées de l'Hérault");
 		Collections.sort( lstVilleFiltree , new VilleCompDesc());
 		for( int i = 0 ; i < 10; i++) {
 			System.out.println( i+1 + " : " + lstVilleFiltree.get(i));
@@ -116,7 +116,7 @@ public class RescencementSimple {
 		ArrayList<Ville> 	lstVillesRegion = Ville.filterVilleRegion( lstCommune, "Occitanie") ;
 		Set<Departement>	lstDept			= new TreeSet< Departement>();
 		for( Ville cVille : lstVillesRegion) {
-			// Creation de la liste de départements de la R�gion sans doublons
+			// Creation de la liste de départements de la Région sans doublons
 			lstDept.add( new Departement( cVille.getCodeDepartement(), "", 0l));
 		}
 		long		popDept;
@@ -141,7 +141,7 @@ public class RescencementSimple {
 		}
 		
 		
-		System.out.println( "Affichez les 10 régions les plus peupl�es de France");
+		System.out.println( "Affichez les 10 régions les plus peuplées de France");
 		Set<Region>		lstRegion			= new TreeSet< Region>();
 		for( Ville cVille : lstCommune) {
 			// Creation de la liste de region sans doublons
@@ -163,14 +163,14 @@ public class RescencementSimple {
 		}
 		Collections.sort( lstRegionTriee, new RegionCompDesc());
 		for( int i = 0 ; i < 10 ; i++) {
-			System.out.println( i+1 + " : " + lstRegionTriee.get(i));
+			System.out.println( i+1 + " : " + lstRegionTriee.get(i).getNom() + " : " +  lstRegionTriee.get(i).getPopulation());
 		}
 	
 		
 		System.out.println( " Affichez les 10 département les plus peuplés de France");
 		Set<Departement>	lstDeptPlusPeuple	= new TreeSet< Departement>();
 		for( Ville cVille : lstCommune) {
-			// Creation de la liste de d�partements de France sans doublons
+			// Creation de la liste de départements de France sans doublons
 			lstDeptPlusPeuple.add( new Departement( cVille.getCodeDepartement(), "", 0));
 		}
 		long		populationDept;
@@ -189,7 +189,7 @@ public class RescencementSimple {
 		}
 		Collections.sort( lstDeptPlusPeupleTrie, new DepartCompDesc());
 		for( int i = 0 ; i < 10; i++) {
-			System.out.println( i+1 + " : " + lstDeptPlusPeupleTrie.get(i));
+			System.out.println( i+1 + " : " + lstDeptPlusPeupleTrie.get(i).getCode() + " : " + lstDeptPlusPeupleTrie.get(i).getPopulation());
 		}
 
 	}

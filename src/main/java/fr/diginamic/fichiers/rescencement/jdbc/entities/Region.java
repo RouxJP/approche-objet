@@ -7,7 +7,7 @@ import java.util.List;
  * @author DIGINAMIC
  *
  */
-public class Region  {
+public class Region implements Comparable<Region>  {
 
 	/** code : String*/
 	private String code;
@@ -28,6 +28,12 @@ public class Region  {
 		this.nom = nom;
 		this.population = population;
 	}
+	
+	@Override
+	public int compareTo(Region o) {
+		return this.nom.compareTo( o.getNom());
+	}
+
 	
 	/** Ajoute une ville
 	 * @param ville ville
